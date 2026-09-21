@@ -1,0 +1,65 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+@theme {
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-panel-recessed: var(--panel-recessed);
+  --color-border: var(--border);
+  --color-ink: var(--ink);
+  --color-ink-dim: var(--ink-dim);
+  --color-ink-faint: var(--ink-faint);
+  
+  --color-emerald: var(--emerald);
+  --color-emerald-deep: var(--emerald-deep);
+  --color-emerald-soft: var(--emerald-soft);
+  
+  --color-amber: var(--amber);
+  --color-amber-deep: var(--amber-deep);
+  --color-amber-soft: var(--amber-soft);
+  
+  --color-coral: var(--coral);
+  --color-coral-deep: var(--coral-deep);
+  --color-coral-soft: var(--coral-soft);
+  
+  --color-azure: var(--azure);
+  --color-azure-deep: var(--azure-deep);
+  --color-azure-soft: var(--azure-soft);
+}
+
+:root {
+  /* Elevation & structure */
+  --bg: #0D1F16;
+  --panel: #1A2E24;
+  --panel-recessed: #152720;
+  --border: #2B3A31;
+
+  /* Ink (typography) */
+  --ink: #E9EEE8;
+  --ink-dim: #93A597;
+  --ink-faint: #5A6C5F;
+
+  /* Contextual status accents */
+  --emerald: #5FA37E;
+  --emerald-deep: #2E5C43;
+  --emerald-soft: rgba(95, 163, 126, 0.2);
+
+  --amber: #C79A57;
+  --amber-deep: #705327;
+  --amber-soft: rgba(199, 154, 87, 0.2);
+
+  --coral: #B5654F;
+  --coral-deep: #6E3222;
+  --coral-soft: rgba(181, 101, 79, 0.2);
+
+  --azure: #5C88A0;
+  --azure-deep: #2A4858;
+  --azure-soft: rgba(92, 136, 160, 0.2);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
