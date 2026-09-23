@@ -15,8 +15,8 @@ export function DashboardRealtime({ initialNodes, initialTasks, initialEvents, i
 
   useEffect(() => {
     const supabase = createBrowserClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://fallback.supabase.co',
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'fallback_key'
     );
 
     // Subscribe to nodes
@@ -147,7 +147,7 @@ export function DashboardRealtime({ initialNodes, initialTasks, initialEvents, i
             {soilAvg.value !== '--' && Number(soilAvg.value) < 60 && (
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-amber" />
-                <span className="text-amber">Soil moisture low — Bed 1</span>
+                <span className="text-amber">Soil moisture low â€” Bed 1</span>
               </div>
             )}
           </div>
