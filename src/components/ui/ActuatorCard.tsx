@@ -18,26 +18,33 @@ interface Props {
   farmId?: string;
 }
 
-function Toggle({ checked, onChange, color = 'bg-emerald', disabled }: { checked: boolean; onChange: () => void; color?: string; disabled?: boolean }) {
+const colorClasses = {
+  emerald: 'bg-emerald shadow-[0_0_10px_var(--emerald-soft)] focus-visible:ring-emerald',
+  azure: 'bg-azure shadow-[0_0_10px_var(--azure-soft)] focus-visible:ring-azure',
+};
+
+function Toggle({ checked, onChange, color = 'emerald', disabled }: { checked: boolean; onChange: () => void; color?: 'emerald' | 'azure'; disabled?: boolean }) {
   return (
     <button
       role="switch"
       aria-checked={checked}
       disabled={disabled}
       onClick={onChange}
-      className={`
+      className={
         relative inline-flex h-8 w-16 shrink-0 items-center rounded-full
-        transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-azure
-        ${checked ? color : 'bg-panel-recessed border border-border'}
-        ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
-      `}
+        transition-all duration-300 ease-in-out
+        focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg
+        $((checked) ? colorClasses[color] : 'bg-panel-recessed border border-border focus-visible:ring-border')
+        $((disabled) ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer')
+      }
     >
       <span
-        className={`
-          inline-block h-6 w-6 transform rounded-full bg-white shadow-md
-          transition-transform duration-200
-          ${checked ? 'translate-x-9' : 'translate-x-1'}
-        `}
+        className={
+          inline-block h-6 w-6 transform rounded-full bg-white
+          shadow-md ring-1 ring-black/5
+          transition-transform duration-300 ease-in-out
+          $((checked) ? 'translate-x-9' : 'translate-x-1')
+        }
       />
     </button>
   );
@@ -53,7 +60,7 @@ export function ActuatorCard({ actuator, farmId }: Props) {
     if (loading) return;
     setLoading(true);
 
-    // Optimistic update first — UI responds instantly
+    // Optimistic update first -- UI responds instantly
     if (cmd === 'turn_on')    { setIsOn(true);  setDraw(actuator.current_draw || '1.2A'); }
     if (cmd === 'turn_off')   { setIsOn(false); setDraw('0.0A'); }
     if (cmd === 'set_auto')   setIsAuto(true);
@@ -66,8 +73,8 @@ export function ActuatorCard({ actuator, farmId }: Props) {
         body: JSON.stringify({ actuatorId: actuator.id, command: cmd, farmId })
       });
     } catch {
-      // Offline — silently queue, replay on reconnect
-      console.warn('Offline — queued:', cmd);
+      // Offline -- silently queue, replay on reconnect
+      console.warn('Offline -- queued:', cmd);
     } finally {
       setLoading(false);
     }
@@ -96,17 +103,17 @@ export function ActuatorCard({ actuator, farmId }: Props) {
         </div>
         <div>
           <p className="text-ink-dim text-xs uppercase flex items-center justify-center gap-1"><Clock size={11}/> Runtime</p>
-          <p className="text-ink text-sm">{actuator.runtime || '—'}</p>
+          <p className="text-ink text-sm">{actuator.runtime || '--'}</p>
         </div>
       </div>
 
-      {/* Toggle switches — no dialogs, no confirmations */}
+      {/* Toggle switches -- no dialogs, no confirmations */}
       <div className="flex items-center justify-between mt-auto">
         <div className="flex flex-col items-center gap-1">
           <span className="text-ink-dim text-xs uppercase">Power</span>
           <Toggle
             checked={isOn}
-            color="bg-emerald"
+            color="emerald"
             disabled={loading}
             onChange={() => sendCommand(isOn ? 'turn_off' : 'turn_on')}
           />
@@ -119,7 +126,7 @@ export function ActuatorCard({ actuator, farmId }: Props) {
           <span className="text-ink-dim text-xs uppercase">Auto Mode</span>
           <Toggle
             checked={isAuto}
-            color="bg-azure"
+            color="azure"
             disabled={loading}
             onChange={() => sendCommand(isAuto ? 'set_manual' : 'set_auto')}
           />
