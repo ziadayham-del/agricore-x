@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 
 import { PageContainer } from '@/components/layout/PageContainer';
 import { Card } from '@/components/ui/Card';
@@ -12,3 +14,4 @@ export default function Page() {
     </PageContainer>
   );
 }
+

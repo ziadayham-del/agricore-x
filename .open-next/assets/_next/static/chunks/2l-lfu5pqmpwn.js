@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,39964,r=>{"use strict";var e=r.i(43476),o=r.i(75157);r.s(["Card",0,function({className:r,...d}){return(0,e.jsx)("div",{className:(0,o.cn)("bg-panel border border-border rounded-lg overflow-hidden",r),...d})}])}]);

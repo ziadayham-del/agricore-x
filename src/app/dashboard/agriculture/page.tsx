@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { PageContainer } from '@/components/layout/PageContainer';
 import { createClient } from '@/lib/supabase/server';
 import { SoilMoistureCard } from '@/components/agriculture/SoilMoistureCard';

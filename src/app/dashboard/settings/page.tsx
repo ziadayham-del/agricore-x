@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { PageContainer } from '@/components/layout/PageContainer';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -29,3 +31,4 @@ export default function SettingsPage() {
     </PageContainer>
   );
 }
+

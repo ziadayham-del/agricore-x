@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { PageContainer } from '@/components/layout/PageContainer';
 import { createClient } from '@/lib/supabase/server';
 import { Card } from '@/components/ui/Card';
@@ -46,3 +48,4 @@ export default async function EventsPage() {
     </PageContainer>
   );
 }
+

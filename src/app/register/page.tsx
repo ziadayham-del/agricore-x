@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import Link from 'next/link'
 import { register } from '../login/actions'
 import { Card } from '@/components/ui/Card'
@@ -65,3 +67,4 @@ export default async function RegisterPage({
     </div>
   )
 }
+

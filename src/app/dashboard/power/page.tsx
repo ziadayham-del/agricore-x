@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { PageContainer } from '@/components/layout/PageContainer';
 import { createClient } from '@/lib/supabase/server';
 import { BatteryCard } from '@/components/power/BatteryCard';

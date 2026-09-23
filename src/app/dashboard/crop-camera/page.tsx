@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { PageContainer } from '@/components/layout/PageContainer';
 import { SecurityCamera } from '@/components/security/SecurityCamera';
 import { Card } from '@/components/ui/Card';

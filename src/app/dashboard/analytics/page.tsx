@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { PageContainer } from '@/components/layout/PageContainer';
 import { createClient } from '@/lib/supabase/server';
 import { AIChat } from '@/components/ai/AIChat';
@@ -41,3 +43,4 @@ export default async function AnalyticsPage() {
     </PageContainer>
   );
 }
+
