@@ -30,21 +30,21 @@ function Toggle({ checked, onChange, color = 'emerald', disabled }: { checked: b
       aria-checked={checked}
       disabled={disabled}
       onClick={onChange}
-      className={
+      className={`
         relative inline-flex h-8 w-16 shrink-0 items-center rounded-full
         transition-all duration-300 ease-in-out
         focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg
-        $((checked) ? colorClasses[color] : 'bg-panel-recessed border border-border focus-visible:ring-border')
-        $((disabled) ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer')
-      }
+        ${checked ? colorClasses[color] : 'bg-panel-recessed border border-border focus-visible:ring-border'}
+        ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
+      `}
     >
       <span
-        className={
+        className={`
           inline-block h-6 w-6 transform rounded-full bg-white
           shadow-md ring-1 ring-black/5
           transition-transform duration-300 ease-in-out
-          $((checked) ? 'translate-x-9' : 'translate-x-1')
-        }
+          ${checked ? 'translate-x-9' : 'translate-x-1'}
+        `}
       />
     </button>
   );
